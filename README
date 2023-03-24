@@ -1,0 +1,29 @@
+This little script allows to switch between different keymaps.
+
+Currently everything is hardcoded. If you wish to use it for your own needs, you have two options :
+- Change the available keymaps; or
+- create a generic solution that supports easy configuration for future users.
+
+Once the script is tailored to your needs, you can integrate it with i3/i3status as follows:
+
+Assuming you cloned the repository into ~/.local/switchmap
+
+Make script executable :
+
+	chmod +x ~/.local/switchmap/switchmap.sh
+
+Configure i3status :
+
+	~/.config/i3status/config
+
+		order += "read_file keymap"
+
+		read_file keymap {
+			path = "~/.local/switchmap/map"
+		}
+
+Configure i3 :
+
+	~/.config/i3/config
+
+		bindsym $mod+m exec ~/.local/switchmap/switchmap.sh
